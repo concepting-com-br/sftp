@@ -1,4 +1,4 @@
-FROM ghcr.io/concepting-com-br/base-image:latest
+FROM ghcr.io/concepting-com-br/base-image:1.0.0
 
 LABEL maintainer="fvilarinho@concepting.com.br"
 
@@ -10,16 +10,13 @@ USER root
 
 RUN apk update && \
     apk --no-cache add openssh-sftp-server \
-                       openssh-server && \
-    apk --no-cache \ 
-        --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing \ 
-        add etcd-ctl
+                       openssh-server
                        
 RUN /usr/bin/ssh-keygen -A
 
 COPY bin/startup.sh ${BIN_DIR}/child-startup.sh
 COPY bin/install.sh ${BIN_DIR}/child-install.sh
-COPY .env ${ETC_DIR}/
+COPY .env ${ETC_DIR}/.release
 
 RUN chmod +x ${BIN_DIR}/child-*.sh && \
     chown -R user:group ${HOME_DIR}/ && \
