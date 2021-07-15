@@ -15,7 +15,7 @@
 	},
 	"password": {
 		"description": "Password to be used by the connections.",
-		"value": "Sftp@2017"
+		"value": "#User@2021!"
 	},
 	"port": {
 		"description": "Network port to listen the requests.",
