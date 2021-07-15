@@ -10,7 +10,8 @@ USER root
 
 RUN apk update && \
     apk --no-cache add openssh-sftp-server \
-                       openssh-server
+                       openssh-server \
+                       rsync
                        
 RUN /usr/bin/ssh-keygen -A
 
